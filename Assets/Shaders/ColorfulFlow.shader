@@ -5,8 +5,11 @@ Shader "Unlit/ColorfulFlow"
         _ColorIntensity("Color Intensity", Range(0, 1)) = 1
         _ColorA("Color A", Color) = (1,1,1,1)
         _ColorB("Color B", Color) = (1,1,1,1)
-        _ColorAEdge("ColorA Edge", Range(0, 1)) = 0
-        _ColorBEdge("ColorB Edge", Range(0, 1)) = 1
+        _ColorAEdge("Color A Edge", Range(0, 1)) = 0
+        _ColorBEdge("Color B Edge", Range(0, 1)) = 1
+        _Offset("Offset", Range(0, 1)) = 0
+        _OffsetMultiplier("Offset Multiplier", Range(0, 1)) = 0.1
+        [KeywordEnum(X,Y)] _WavesDirection("Waves Direction", int) = 0
         _WavesSpeed("Waves Speed", Float) = 1
         _WavesDensity("Waves Density", Float) = 5
     }
@@ -32,32 +35,33 @@ Shader "Unlit/ColorfulFlow"
             float _ColorAEdge;
             float _ColorBEdge;
 
+            float _Offset;
+            float _OffsetMultiplier;
+
+            int _WavesDirection;
+            
             float _WavesSpeed;
             float _WavesDensity;
             
-            struct MeshaData
+            struct MeshData
             {
                 float4 vertex : POSITION;
                 float2 uv0 : TEXCOORD0;
-                float3 normal : NORMAL;
 
             };
 
             struct Interpolators
             {
                 float4 vertex : SV_POSITION;
-                float3 normal: TEXCOORD0;
                 float2 uv: TEXCOORD1;
             };
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
 
-            Interpolators vert (MeshaData v)
+            Interpolators vert (MeshData v)
             {
                 Interpolators o;
-
-                o.normal = mul((float3x3)UNITY_MATRIX_M, v.normal);
                 
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = v.uv0;
@@ -68,7 +72,13 @@ Shader "Unlit/ColorfulFlow"
             fixed4 frag (Interpolators i) : SV_Target
             {
                 float t = saturate(InverseLerp(_ColorAEdge, _ColorBEdge, i.uv.x));
-                return _ColorIntensity * lerp(_ColorA, _ColorB, t) * GetWave(i.uv.x, _WavesSpeed, _WavesDensity);
+
+                float offset = cos(i.uv.y * TAU * _Offset) * _OffsetMultiplier;
+
+                float wavesDirection = _WavesDirection == 0 ? i.uv.x : i.uv.y;
+
+                return _ColorIntensity * lerp(_ColorA, _ColorB, t) *
+                    (GetWave(wavesDirection, _WavesSpeed, _WavesDensity) + offset);
             }
             
             ENDCG

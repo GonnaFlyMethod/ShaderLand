@@ -7,8 +7,7 @@ float InverseLerp(float a, float b, float v)
 
 float GetWave(float coord, float wavesSpeed, float wavesDensity)
 {
-    float wave = cos((coord - _Time * wavesSpeed) * wavesDensity * TAU) * 0.5 + 0.5;
-    return wave;
+    return cos((coord + _Time * wavesSpeed) * wavesDensity * TAU) * 0.5 + 0.5;
 }
 
             

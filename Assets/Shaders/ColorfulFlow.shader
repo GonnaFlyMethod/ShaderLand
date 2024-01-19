@@ -2,24 +2,21 @@ Shader "Unlit/ColorfulFlow"
 {
     Properties
     {
+        _ColorIntensity("Color Intensity", Range(0, 1)) = 1
         _ColorA("Color A", Color) = (1,1,1,1)
         _ColorB("Color B", Color) = (1,1,1,1)
-        _ColorStart("_ColorAStart", Range(0, 1)) = 0
-        _ColorEnd("_ColorBEnd", Range(0, 1)) = 1
+        _ColorAEdge("ColorA Edge", Range(0, 1)) = 0
+        _ColorBEdge("ColorB Edge", Range(0, 1)) = 1
+        _WavesSpeed("Waves Speed", Float) = 1
+        _WavesDensity("Waves Density", Float) = 5
     }
     SubShader
     {
        
-//        Tags { "RenderType"="Transparent" "Queue"="Transparent"}
-        Tags{ "RenderType" = "Opaque"}
+        Tags { "RenderType"="Opaque" }
 
         Pass
         {
-//            Cull Off
-//            Blend One One 
-//            ZWrite Off
-//            ZTest LEqual
-            
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -27,10 +24,16 @@ Shader "Unlit/ColorfulFlow"
             #include "UnityCG.cginc"
             #include "Common.cginc"
 
+            float _ColorIntensity;
+            
             float4 _ColorA;
             float4 _ColorB;
-            float _ColorAStart;
-            float _ColorBEnd;
+
+            float _ColorAEdge;
+            float _ColorBEdge;
+
+            float _WavesSpeed;
+            float _WavesDensity;
             
             struct MeshaData
             {
@@ -64,21 +67,8 @@ Shader "Unlit/ColorfulFlow"
 
             fixed4 frag (Interpolators i) : SV_Target
             {
-                float topBottomRemover = (abs(i.normal.y) < 0.999);
-
-                //float wave = GetWave(i.uv.y, 5, 2);\
-                
-                float t = InverseLerp(_ColorAStart, _ColorBEnd, i.uv.x);
-                return t;
-                
-                return lerp(_ColorA, _ColorB, t);
-
-                //
-                // float4 gradient = lerp(_ColorA, _ColorB, t);
-                // return gradient;
-                // return gradient * wave * topBottomRemover;
-                // //
-                // 
+                float t = saturate(InverseLerp(_ColorAEdge, _ColorBEdge, i.uv.x));
+                return _ColorIntensity * lerp(_ColorA, _ColorB, t) * GetWave(i.uv.x, _WavesSpeed, _WavesDensity);
             }
             
             ENDCG

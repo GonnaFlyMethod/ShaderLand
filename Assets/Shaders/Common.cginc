@@ -9,5 +9,4 @@ float GetWave(float coord, float wavesSpeed, float wavesDensity)
 {
     return cos((coord + _Time * wavesSpeed) * wavesDensity * TAU) * 0.5 + 0.5;
 }
-
             

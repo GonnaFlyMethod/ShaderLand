@@ -1,3 +1,5 @@
+// Inspired by Freya Holmér 
+
 Shader "Unlit/ColorfulFlow"
 {
     Properties

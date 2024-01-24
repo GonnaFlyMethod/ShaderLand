@@ -118,8 +118,8 @@ Material:
     - _QueueControl: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RippleDensity: 30
-    - _RippleSize: 0.77
+    - _RippleDensity: 90
+    - _RippleSize: 0.86
     - _RippleSpeed: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
@@ -127,7 +127,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _SurfaceSmoothness: 0.46
+    - _SurfaceSmoothness: 1
     - _Transparency: 0.9
     - _WaveSpeed: 0.05
     - _WorkflowMode: 1

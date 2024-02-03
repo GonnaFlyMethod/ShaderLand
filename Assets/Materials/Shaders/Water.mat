@@ -113,6 +113,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _HorizonDistance: 8.66
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -139,6 +140,7 @@ Material:
     - _DeepWaterColor: {r: 0.10760058, g: 0.26795205, b: 0.5849056, a: 0}
     - _DepthColor: {r: 0.20932718, g: 0.9056604, b: 0.22960389, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _HorizonColor: {r: 1, g: 0.19339621, b: 0.5488169, a: 0}
     - _RippleColor: {r: 0.14244394, g: 0.27237463, b: 0.9150943, a: 0}
     - _ShallowWaterColor: {r: 0.3920879, g: 0.76461357, b: 0.8396226, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}

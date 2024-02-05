@@ -115,6 +115,8 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _HorizonDistance: 9
+    - _IntersectionFoamDepth: 5.71
+    - _IntersectionFoamFade: 0.9
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005

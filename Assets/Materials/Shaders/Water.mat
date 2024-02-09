@@ -60,6 +60,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _IntersectionFoamTex:
+        m_Texture: {fileID: 2800000, guid: a3d1e2b730c15ed41a0e657c4a938b83, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -102,6 +106,7 @@ Material:
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
+    - _CutOff: 0.9
     - _Cutoff: 0.5
     - _Depth: 0
     - _DepthDistance: 10
@@ -115,8 +120,8 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _HorizonDistance: 9
-    - _IntersectionFoamDepth: 5.71
-    - _IntersectionFoamFade: 0.9
+    - _IntersectionFoamDepth: 5.2
+    - _IntersectionFoamFade: 0.005
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005

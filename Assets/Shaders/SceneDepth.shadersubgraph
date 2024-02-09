@@ -5,9 +5,6 @@
     "m_Properties": [
         {
             "m_Id": "15b4809994464209a4ef0f0bb406e2cc"
-        },
-        {
-            "m_Id": "23cfa7a37c344c20af7c66cdea040960"
         }
     ],
     "m_Keywords": [],
@@ -313,34 +310,6 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
-    }
-}
-
-{
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
-    "m_ObjectId": "23cfa7a37c344c20af7c66cdea040960",
-    "m_Guid": {
-        "m_GuidSerialized": "36b34a8a-de75-424d-b0f6-9a3c955266e0"
-    },
-    "m_Name": "ScreenPos",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "ScreenPos",
-    "m_DefaultReferenceName": "_ScreenPos",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": 0.0,
-    "m_FloatType": 0,
-    "m_RangeValues": {
-        "x": 0.0,
-        "y": 1.0
     }
 }
 
@@ -766,9 +735,6 @@
     "m_ChildObjectList": [
         {
             "m_Id": "15b4809994464209a4ef0f0bb406e2cc"
-        },
-        {
-            "m_Id": "23cfa7a37c344c20af7c66cdea040960"
         }
     ]
 }
